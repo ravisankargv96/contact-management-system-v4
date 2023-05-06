@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -16,8 +17,8 @@ import java.util.List;
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping("cms/api/v1/contacts")
+@SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Contact API")
-
 public class ContactController {
 
     private final ContactService contactService;
@@ -28,9 +29,8 @@ public class ContactController {
     }
 
 
-    @SecurityRequirements
     @Operation(summary = "Create a new contact")
-    @PostMapping("") // + "/addContact"
+    @PostMapping("")
     public Contact saveContact(@RequestBody Contact contact) {
         return contactService.saveContact(contact);
     }
@@ -42,21 +42,21 @@ public class ContactController {
     })
 
 
-    @GetMapping("") // + "/getContact"
+    @GetMapping("")
     public List<Contact> getAllContacts() {
         return contactService.getAllContacts();
     }
 
 
     @Operation(summary = "Get a contact by id")
-    @GetMapping("/{id}") // + "/getContact/{id}"
+    @GetMapping("/{id}")
     public ResponseEntity<Contact> getContactById(@PathVariable(value = "id") Long contactId) {
         Contact contact = contactService.getContactById(contactId);
         return ResponseEntity.ok().body(contact);
     }
 
     @Operation(summary = "Delete a contact by id")
-    @DeleteMapping("/{id}") // + "deleteContact/{id}"
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteContact(@PathVariable(value = "id") Long contactId) {
         boolean deleted = false;
         deleted = contactService.deleteContact(contactId);
@@ -64,7 +64,7 @@ public class ContactController {
     }
 
     @Operation(summary = "Update a contact by id")
-    @PutMapping("/{id}") // + "/updateContact/{id}"
+    @PutMapping("/{id}")
     public ResponseEntity<Contact> updateContact(@PathVariable(value = "id") Long contactId, @RequestBody Contact contactDetails) {
         contactDetails = contactService.updateContact(contactId, contactDetails);
         return ResponseEntity.ok().body(contactDetails);

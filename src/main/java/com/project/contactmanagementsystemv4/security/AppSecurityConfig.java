@@ -30,7 +30,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
                 //.antMatchers(HttpMethod.POST, "/api/v1/users/**").permitAll()
                 //.antMatchers(HttpMethod.POST, "/api/v1/contacts/**").permitAll()
                 //.antMatchers("/**").permitAll() //got access to all the endpoints
-                //.antMatchers("/cms/api/v1/contacts/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/cms/api/v1/contacts/**").permitAll()
                 .antMatchers("/cms/api/v1/users/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/v3/api-docs/**").permitAll()
