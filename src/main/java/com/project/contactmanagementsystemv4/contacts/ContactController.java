@@ -13,16 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@SuppressWarnings("ALL")
-@CrossOrigin(origins = {"http://localhost:3000"})
+
 @RestController
 @RequestMapping("cms/api/v1/contacts")
-@SecurityRequirement(name = "bearerAuth")
+//@SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Contact API")
 public class ContactController {
 
     private final ContactService contactService;
-
 
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
@@ -30,6 +28,7 @@ public class ContactController {
 
 
     @Operation(summary = "Create a new contact")
+    @SecurityRequirement(name = "bearerAuth")
     @PostMapping("")
     public Contact saveContact(@RequestBody Contact contact) {
         return contactService.saveContact(contact);
@@ -40,8 +39,6 @@ public class ContactController {
             @ApiResponse(responseCode = "200", description = "Found the contacts", content = {@Content(mediaType = "application/json")}),
             @ApiResponse(responseCode = "404", description = "Contacts not found", content = @Content)
     })
-
-
     @GetMapping("")
     public List<Contact> getAllContacts() {
         return contactService.getAllContacts();
@@ -56,6 +53,7 @@ public class ContactController {
     }
 
     @Operation(summary = "Delete a contact by id")
+    @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteContact(@PathVariable(value = "id") Long contactId) {
         boolean deleted = false;
@@ -64,6 +62,7 @@ public class ContactController {
     }
 
     @Operation(summary = "Update a contact by id")
+    @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
     public ResponseEntity<Contact> updateContact(@PathVariable(value = "id") Long contactId, @RequestBody Contact contactDetails) {
         contactDetails = contactService.updateContact(contactId, contactDetails);
