@@ -18,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("") //change registerUser instead of createUser
+    @PostMapping("/register") //change registerUser instead of createUser
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody CreateUserDTO createUserDTO) {
         UserResponseDTO savedUser = userService.createUser(createUserDTO);
         return ResponseEntity
