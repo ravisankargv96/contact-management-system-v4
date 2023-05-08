@@ -10,7 +10,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/cms/api/v1/users") //"cms/api/v1/contacts"
-@CrossOrigin(origins = "https://contact-management-system.up.railway.app")
+@CrossOrigin(origins = "http://contact-management-system.up.railway.app")
 public class UserController {
 
     private final UserService userService;
