@@ -13,9 +13,21 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@OpenAPIDefinition(info = @Info(title = "Contact Management System", version = "v1",
-        contact = @Contact(name = "Ravi Sankar", email = "ravisankargv96@gmail.com")),
-        security = {@SecurityRequirement(name = "basicAuth"), @SecurityRequirement(name = "bearerToken")}
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Contact Management System",
+                description = "To build a REST API that can be used to manage a\n" +
+                        "list of contacts.",
+                version = "v1.0",
+                contact = @Contact(
+                        name = "Ravi Sankar",
+                        email = "ravisankargv96@gmail.com",
+                        url = "www.linkedin.com/in/ravisankargv96/"
+                    )),
+        security = {
+                @SecurityRequirement(name = "basicAuth"),
+                @SecurityRequirement(name = "bearerToken")
+        }
 )
 @SecurityScheme(
         name = "bearerAuth",
