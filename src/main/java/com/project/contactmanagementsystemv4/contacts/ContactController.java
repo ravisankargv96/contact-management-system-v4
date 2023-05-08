@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("cms/api/v1/contacts")
 //@SecurityRequirement(name = "bearerAuth")
+@CrossOrigin(origins = "https://contact-management-system.up.railway.app")
 @Tag(name = "Contact API")
 public class ContactController {
 
