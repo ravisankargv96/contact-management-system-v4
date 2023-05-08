@@ -53,7 +53,7 @@ public class UserService {
 
         switch(authType) {
             case JWT:
-                //userResponseDTO.setToken(jwtServices.generateToken(userEntity.getId()));
+                userResponseDTO.setToken(jwtService.createJWT(userEntity.getId()));
                 break;
             case AUTH_TOKEN:
                 //userResponseDTO.setToken(authTokenService.generateToken(userEntity.getId()));

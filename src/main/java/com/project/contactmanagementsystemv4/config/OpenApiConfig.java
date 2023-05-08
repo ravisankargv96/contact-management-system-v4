@@ -21,8 +21,8 @@ import org.springframework.context.annotation.Configuration;
                 version = "v1.0",
                 contact = @Contact(
                         name = "Ravi Sankar",
-                        email = "ravisankargv96@gmail.com",
-                        url = "www.linkedin.com/in/ravisankargv96/"
+                        email = "ravisankargv96@gmail.com"
+                        //url = "www.linkedin.com/in/ravisankargv96/"
                     )),
         security = {
                 @SecurityRequirement(name = "basicAuth"),

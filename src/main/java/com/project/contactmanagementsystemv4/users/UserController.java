@@ -3,6 +3,7 @@ package com.project.contactmanagementsystemv4.users;
 import com.project.contactmanagementsystemv4.users.dto.CreateUserDTO;
 import com.project.contactmanagementsystemv4.users.dto.LoginUserDTO;
 import com.project.contactmanagementsystemv4.users.dto.UserResponseDTO;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Operation(summary = "Register a new User")
     @PostMapping("/register") //change registerUser instead of createUser
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody CreateUserDTO createUserDTO) {
         UserResponseDTO savedUser = userService.createUser(createUserDTO);
@@ -27,6 +29,7 @@ public class UserController {
                 .body(savedUser);
     }
 
+    @Operation(summary = "Login Here")
     @PostMapping("/login")
     public ResponseEntity<UserResponseDTO> loginUser(
             @RequestBody LoginUserDTO loginUserDTO,
